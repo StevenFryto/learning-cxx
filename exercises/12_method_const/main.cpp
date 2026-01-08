@@ -4,8 +4,9 @@
 
 struct Fibonacci {
     int numbers[11];
-    // TODO: 修改方法签名和实现，使测试通过
-    int get(int i) {
+    // 方法应为 const，直接返回已知的常量数组值
+    int get(int i) const {
+        return numbers[i];
     }
 };
 

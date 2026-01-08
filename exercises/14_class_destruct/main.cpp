@@ -10,15 +10,25 @@ class DynFibonacci {
     int cached;
 
 public:
-    // TODO: 实现动态设置容量的构造器
-    DynFibonacci(int capacity): cache(new ?), cached(?) {}
+    // 动态分配缓存并初始化
+    DynFibonacci(int capacity) : cache(new size_t[capacity]), cached(0) {
+        // 不在此处初始化内容，延迟到第一次计算
+    }
 
-    // TODO: 实现析构器，释放缓存空间
-    ~DynFibonacci();
+    // 析构函数，释放缓存
+    ~DynFibonacci() {
+        delete[] cache;
+    }
 
-    // TODO: 实现正确的缓存优化斐波那契计算
+    // 实现缓存优化斐波那契计算
     size_t get(int i) {
-        for (; false; ++cached) {
+        if (cached < 2) {
+            cache[0] = 0;
+            cache[1] = 1;
+            cached = 2;
+        }
+        if (i < cached) return cache[i];
+        for (; cached <= i; ++cached) {
             cache[cached] = cache[cached - 1] + cache[cached - 2];
         }
         return cache[i];

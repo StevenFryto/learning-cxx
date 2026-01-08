@@ -4,7 +4,8 @@
 
 int main(int argc, char **argv) {
     // TODO: 补全变量定义并打印加法运算
-    // x ?
+    // 定义一个整数变量 x 并打印其与自身相加的结果
+    int x = 1;
     std::cout << x << " + " << x << " = " << x + x << std::endl;
     return 0;
 }
